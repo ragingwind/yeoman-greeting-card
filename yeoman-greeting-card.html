@@ -1,0 +1,48 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-animated-pages/core-animated-pages.html">
+<!--
+Element providing solution to no problem in particular.
+
+##### Example
+
+    <yeoman-greeting-card></yeoman-greeting-card>
+
+@element yeoman-greeting-card
+@blurb Allo, Allo!
+@status alpha
+@homepage http://ragingwind.github.io/yeoman-greeting-card
+-->
+<polymer-element name="yeoman-greeting-card" attributes="notitle">
+
+  <template>
+    <link rel="stylesheet" href="yeoman-greeting-card.css" />
+
+    <core-animated-pages selected="{{page}}" transitions="hero-transition">
+      <section>
+          <div class="square-card" hero-id="yeoman-card" on-tap="{{transition}}" hero>
+            <div class="square-card-top" hero-id="yeoman-card-art"></div>
+          </div>
+      </section>
+
+      <section>
+        <div class="postcard" layout horizontal hero-id="yeoman-card" on-tap="{{transition}}" hero>
+          <div class="postcard-left" hero-id="yeoman-postcard-art" hero></div>
+          <div class="postcard-right" flex>
+            <h1>'Allo, 'Allo!</h1>
+            <div class="postcard-detail">Always a pleasure scaffolding your apps.</div>
+          </div>
+        </div>
+      </section>
+    </core-animated-pages>
+  </template>
+
+  <script>
+    Polymer('yeoman-greeting-card', {
+      page: 0,
+      transition: function(e) {
+        this.page ^= 1;
+      }
+    });
+
+  </script>
+</polymer-element>
