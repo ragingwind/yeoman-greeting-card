@@ -2,104 +2,22 @@
 <link rel="import" href="../neon-animation/neon-animations.html">
 <link rel="import" href="../neon-animation/neon-animated-pages.html">
 <link rel="import" href="../neon-animation/neon-shared-element-animatable-behavior.html">
-<link rel="stylesheet" href="yeoman-greeting-card.css">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="card-content.html">
+<link rel="import" href="card-cover.html">
 
 <!--
 Allo, Allo! Yeoman Greeting Card element
 
 ##### Example
 
-    <yeoman-greeting-card></yeoman-greeting-card>
+    <yeoman-greeting-card message="Say greeting"></yeoman-greeting-card>
 
 @element yeoman-greeting-card
-@blurb Allo, Allo!
-@status alpha
 @homepage http://ragingwind.github.io/yeoman-greeting-card
 -->
 
-<dom-module id="square-card">
-<template>
-  <div class="square-card" id="squarecard">
-    <div class="square-card-top"></div>
-  </div>
-</template>
-<script>
-  Polymer({
-    is: 'square-card',
-    behaviors: [
-      Polymer.NeonSharedElementAnimatableBehavior
-    ],
-    properties: {
-      sharedElements: {
-        value: function() {
-          return {
-            'hero': this.$.hero
-          }
-        }
-      },
-      _animationConfig: {
-        value: function() {
-          return {
-            'entry': {
-              name: 'hero-animation',
-              id: 'hero',
-              toPage: this
-            },
-            'exit': {
-              name: 'fade-in-animation',
-              node: this,
-              timing: {delay: 50},
-              fromPage: this
-            }
-          }
-        }
-      }
-    }
-  });
-</script>
-</dom-module>
-
-<dom-module id="post-card">
-<template>
-  <div class="postcard" layout horizontal>
-    <div class="postcard-left" hero-id="yeoman-postcard-art"></div>
-    <div class="postcard-right" flex>
-      <h1>'Allo, 'Allo!</h1>
-      <div class="postcard-detail">Post card</div>
-    </div>
-  </div>
-</template>
-<script>
-  Polymer({
-    is: 'post-card',
-    behaviors: [
-      Polymer.NeonSharedElementAnimatableBehavior
-    ],
-    properties: {
-      sharedElements: {
-        value: function() {
-          return {
-            'hero': this.$.hero
-          }
-        }
-      },
-      _animationConfig: {
-        value: function() {
-          return {
-            'entry': {
-              name: 'hero-animation',
-              id: 'hero',
-              fromPage: this
-            }
-          }
-        }
-      }
-    }
-  });
-</script>
-</dom-module>
-
-<dom-module id="yeoman-greeting-card" attributes="notitle">
+<dom-module id="yeoman-greeting-card">
   <style>
     :host {
       display: block;
@@ -113,10 +31,9 @@ Allo, Allo! Yeoman Greeting Card element
     }
   </style>
   <template>
-    <link rel="stylesheet" href="yeoman-greeting-card.css" />
-    <neon-animated-pages id="pages" selected="0" style="background-color:red">
-      <square-card></square-card>
-      <post-card></post-card>
+    <neon-animated-pages id="pages" selected="0">
+      <card-cover></card-cover>
+      <card-content message={{message}}></card-content>
     </neon-animated-pages>
   </template>
   <script>
@@ -124,6 +41,9 @@ Allo, Allo! Yeoman Greeting Card element
       is: 'yeoman-greeting-card',
       listeners: {
         'click': '_onClick'
+      },
+      properties: {
+        message: String
       },
       _onClick: function() {
         console.log('clicked', this.$.pages.selected);

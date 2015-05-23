@@ -1,0 +1,91 @@
+<dom-module id="card-content">
+<style>
+  :host {
+    @apply(--layout-center);
+    @apply(--layout-vertical);
+    @apply(--layout-horizontal);
+  }
+
+  #content {
+    @apply(--layout-flex);
+    @apply(--layout-horizontal --layout-center);
+    height: 440px;
+    text-align: start;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  #header {
+    @apply(--layout-inline);
+    width: 300px;
+    height: 406px;
+    background: url("yeoman-standing.png") no-repeat 20px 20px
+  }
+
+  #body {
+    @apply(--layout-flex);
+    padding: 24px;
+  }
+
+  #body h1 {
+    font-size: 54px;
+    margin-top: 20px;
+    margin-bottom: 10px
+  }
+
+  #body div {
+    font-size: 21px;
+    font-weight: 200;
+  }
+</style>
+<template>
+  <div id="content">
+    <div id="header"></div>
+    <div id="body">
+      <h1>'Allo, 'Allo!</h1>
+      <div>{{message}}</div>
+    </div>
+  </div>
+</template>
+<script>
+  Polymer({
+    is: 'card-content',
+    behaviors: [
+      Polymer.NeonSharedElementAnimatableBehavior
+    ],
+    properties: {
+      message: {
+        type: String,
+        value: "Post cards"
+      },
+      sharedElements: {
+        value: function() {
+          return {
+            'hero': this.$.header
+          }
+        }
+      },
+      animationConfig: {
+        value: function() {
+          return {
+            'entry': [{
+              name: 'hero-animation',
+              id: 'hero',
+              toPage: this
+            }],
+            'exit': [{
+              name: 'hero-animation',
+              id: 'hero',
+              fromPage: this
+            }, {
+              node: this.$.body,
+              name: 'fade-out-animation',
+              animation: 'fade-out-animation'
+            }]
+          }
+        }
+      }
+    }
+  });
+</script>
+</dom-module>

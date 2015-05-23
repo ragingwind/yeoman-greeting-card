@@ -1,0 +1,61 @@
+<dom-module id="card-cover">
+<style>
+  :host {
+    @apply(--layout-center);
+    @apply(--layout-vertical);
+    @apply(--layout-horizontal);
+  }
+
+  .flex {
+    @apply(--layout-flex);
+    @apply(--layout-vertical --layout-center);
+    text-align: start;
+    background: transparent;
+  }
+
+  #cover {
+    width: 374px;
+    height: 306px;
+    background: url("yeoman-logo.png") no-repeat;
+  }
+</style>
+
+<template>
+  <div class="flex">
+    <div id="cover"></div>
+  </div>
+</template>
+<script>
+  Polymer({
+    is: 'card-cover',
+    behaviors: [
+      Polymer.NeonSharedElementAnimatableBehavior
+    ],
+    properties: {
+      sharedElements: {
+        value: function() {
+          return {
+            'hero': this.$.cover
+          }
+        }
+      },
+      animationConfig: {
+        value: function() {
+          return {
+            'entry': {
+              name: 'hero-animation',
+              id: 'hero',
+              toPage: this
+            },
+            'exit': {
+              name: 'hero-animation',
+              id: 'hero',
+              fromPage: this
+            }
+          }
+        }
+      }
+    }
+  });
+</script>
+</dom-module>
