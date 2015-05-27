@@ -6,23 +6,22 @@
     @apply(--layout-horizontal);
   }
 
-  .flex {
+  .cover-frame {
     @apply(--layout-flex);
     @apply(--layout-vertical --layout-center);
-    text-align: start;
-    background: transparent;
   }
 
   #cover {
-    width: 374px;
-    height: 306px;
-    background: url("yeoman-logo.png") no-repeat;
+    max-width: 100%;
+    display: block;
+    height: auto;
+    user-select: none;
   }
 </style>
 
 <template>
-  <div class="flex">
-    <div id="cover"></div>
+  <div class="cover-frame">
+    <img id="cover" src="yeoman-logo.png">
   </div>
 </template>
 <script>

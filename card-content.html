@@ -9,7 +9,6 @@
   #content {
     @apply(--layout-flex);
     @apply(--layout-horizontal --layout-center);
-    height: 440px;
     text-align: start;
     overflow: hidden;
     background: transparent;
@@ -17,14 +16,18 @@
 
   #header {
     @apply(--layout-inline);
-    width: 300px;
-    height: 406px;
-    background: url("yeoman-standing.png") no-repeat 20px 20px
+  }
+
+  #header-logo {
+    width: 100%;
+    height: auto;
+    display: block;
+    user-select: none;
   }
 
   #body {
     @apply(--layout-flex);
-    padding: 24px;
+    margin-left: 20px;
   }
 
   #body h1 {
@@ -40,7 +43,9 @@
 </style>
 <template>
   <div id="content">
-    <div id="header"></div>
+    <div id="header">
+      <img id="header-logo" src="yeoman-standing.png">
+    </div>
     <div id="body">
       <h1>'Allo, 'Allo!</h1>
       <div>{{message}}</div>
