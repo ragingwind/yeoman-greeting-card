@@ -1,7 +1,7 @@
 yeoman-greeting-card
 ================
 
-See the [component page](http://ragingwind.github.io/yeoman-greeting-card) for more information.
+See the [demo](http://ragingwind.github.io/yeoman-greeting-card/components/yeoman-greeting-card/demo/) for more information.
 
 ## Getting Started
 
