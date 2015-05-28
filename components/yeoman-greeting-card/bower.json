@@ -1,0 +1,15 @@
+{
+  "name": "yeoman-greeting-card",
+  "version": "0.0.1",
+  "keywords": [
+    "seed",
+    "polymer",
+    "web-components"
+  ],
+  "main": "yeoman-greeting-card.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0",
+    "iron-elements": "PolymerElements/iron-component-page#^1.0.0",
+    "neon-animation": "polymerelements/neon-animation#^1.0.0"
+  }
+}
