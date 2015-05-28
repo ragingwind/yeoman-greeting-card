@@ -1,26 +1,20 @@
 <dom-module id="card-cover">
 <style>
-  :host {
-    @apply(--layout-center);
-    @apply(--layout-vertical);
-    @apply(--layout-horizontal);
-  }
-
-  .cover-frame {
+  .frame {
+    display: flex;
     @apply(--layout-flex);
-    @apply(--layout-vertical --layout-center);
+    @apply(--layout-center-justified);
   }
 
   #cover {
     max-width: 100%;
-    display: block;
     height: auto;
     user-select: none;
   }
 </style>
 
 <template>
-  <div class="cover-frame">
+  <div class="frame">
     <img id="cover" src="yeoman-logo.png">
   </div>
 </template>
